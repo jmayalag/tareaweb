@@ -1,16 +1,12 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>id</th>
-      <th>name</th>
-      <th>age</th>
+      <th ng-repeat="opt in options">{{opt}}</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="item in items">
-      <td>{{item.id}}</td>
-      <td>{{item.name}}</td>
-      <td>{{item.age}}</td>
+      <td ng-repeat="(key, _) in options">{{item[key]}}</td>
     </tr>
   </tbody>
 </table>

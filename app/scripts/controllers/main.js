@@ -13,5 +13,5 @@ angular.module('tareawebApp')
       {id: 1, name: 'Jordan', age: 21},
       {id: 2, name: 'Alma', age: 21}
     ];
-    $scope.opt = {order: 'random', page: '1'};
+    $scope.opt = {id: 'ID', name: 'Nombre', age: 'Edad'};
   });

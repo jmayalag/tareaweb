@@ -6,6 +6,6 @@ angular.module('tareawebApp').
         options: '=',
         items: '='
       },
-      templateUrl: 'views/directives/myList.html'
+      templateUrl: 'views/myList.html'
     };
   });
