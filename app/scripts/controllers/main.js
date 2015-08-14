@@ -8,15 +8,12 @@
  * Controller of the tareawebApp
  */
 angular.module('tareawebApp')
-  .controller('MainCtrl', ['$scope', 'users', function ($scope, users) {
+  .controller('MainCtrl', ['$scope', 'User', function ($scope, User) {
     $scope.people = [
       {id: 1, name: 'Jordan', age: 21},
       {id: 2, name: 'Alma', age: 21}
     ];
     $scope.opt = {id: 'ID', name: 'Nombre', age: 'Edad'};
-    users.success(function (data) {
-      $scope.users = data;
-    });
-    $scope.opts = {id: 'ID', name: 'Nombre', email: 'Email'}
-    ''
+    $scope.users = User.query();
+    $scope.opts = {id: 'ID', name: 'Nombre', email: 'Email'};
   }]);
