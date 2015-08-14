@@ -8,6 +8,10 @@
  * Controller of the tareawebApp
  */
 angular.module('tareawebApp')
-  .controller('MainCtrl', function($scope){
-    $scope.todos = ['Item 1', 'Item 2', 'Item 3'];
+  .controller('MainCtrl', function ($scope) {
+    $scope.people = [
+      {id: 1, name: 'Jordan', age: 21},
+      {id: 2, name: 'Alma', age: 21}
+    ];
+    $scope.opt = {order: 'random', page: '1'};
   });
