@@ -4,7 +4,8 @@ angular.module('tareawebApp').
       restrict: 'E',
       scope: {
         options: '=',
-        items: '='
+        items: '=',
+        pag: '&'
       },
       templateUrl: 'views/myList.html',
       link: function(scope,modal){
@@ -13,7 +14,7 @@ angular.module('tareawebApp').
           scope.modal.title = user[opts.title];
           scope.modal.body = [];
           for (data in opts.body){
-            scope.modal.body.push({label:data,value:user[data]});
+            scope.modal.body.push({label:opts.body[data],value:user[data]});
           }
           $('#myModal').modal('show');
         };
