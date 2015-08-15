@@ -1,12 +1,37 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th ng-repeat="opt in options">{{opt}}</th>
+      <th ng-repeat="opt in options.table">{{opt}}</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="item in items">
-      <td ng-repeat="(key, _) in options">{{item[key]}}</td>
+      <td ng-repeat="(key, _) in options.table">{{item[key]}}</td>
+      <td>
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="setDetail(item, options.modal)">
+        Detail
+      </button>
+      </td>
     </tr>
   </tbody>
 </table>
+
+<!--TODO: mejorar esta parte-->
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">{{modal.title}}</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{modal.body}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

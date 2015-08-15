@@ -3,6 +3,8 @@ angular.module('tareawebApp').
     return {
       restrict: 'E',
       scope: {
+        setDetail: '=',
+        modal: '=',
         options: '=',
         items: '='
       },

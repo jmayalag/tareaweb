@@ -15,5 +15,17 @@ angular.module('tareawebApp')
     ];
     $scope.opt = {id: 'ID', name: 'Nombre', age: 'Edad'};
     $scope.users = User.query();
-    $scope.opts = {id: 'ID', name: 'Nombre', email: 'Email'};
+    $scope.opts = {
+      table: {id: 'ID', name: 'Nombre', email: 'Email'},
+      modal: {
+        title: 'name',
+        body: {id: 'ID', name: 'Nombre', phone: 'Tel.', website: 'Pagina'}
+      }
+    };
+    $scope.modal = {}
+
+    $scope.setDetail = function (user, opts) {
+      $scope.modal.title = user[opts.title];
+      $scope.modal.body = user;
+    };
   }]);
