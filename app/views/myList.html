@@ -6,13 +6,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="item in items">
-      <td ng-repeat="(key, _) in options.table">{{item[key]}}</td>
-      <td>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="setDetail(item, options.modal)">
-        Detail
-      </button>
-      </td>
+      <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal);" >{{item[key]}}</td>
     </tr>
   </tbody>
 </table>
@@ -35,3 +29,5 @@
     </div>
   </div>
 </div>
+
+
