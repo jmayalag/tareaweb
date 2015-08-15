@@ -22,10 +22,5 @@ angular.module('tareawebApp')
         body: {id: 'ID', name: 'Nombre', phone: 'Tel.', website: 'Pagina'}
       }
     };
-    $scope.modal = {}
 
-    $scope.setDetail = function (user, opts) {
-      $scope.modal.title = user[opts.title];
-      $scope.modal.body = user;
-    };
   }]);
