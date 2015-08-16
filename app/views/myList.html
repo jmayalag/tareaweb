@@ -11,7 +11,6 @@
   </tbody>
 </table>
 
-<!--TODO: mejorar esta parte-->
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -29,21 +28,19 @@
     </div>
   </div>
 </div>
-
 <nav>
   <ul class="pagination">
     <li>
-      <a href="#" aria-label="Previous">
+      <a ng-click="changePage(page-1)" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li><a ng-click="pag({newPage:0})">1</a></li>
-    <li><a ng-click="pag({newPage:1})">2</a></li>
-    <li><a ng-click="pag({newPage:2})">3</a></li>
-    <li><a >4</a></li>
-    <li><a >5</a></li>
+
+    <li ng-repeat="p in getPages() track by $index">
+      <a ng-click="changePage($index)">{{$index+1}}</a>
+    </li>
     <li>
-      <a href="#" aria-label="Next">
+      <a ng-click="changePage(page+1)" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
