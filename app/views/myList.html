@@ -6,13 +6,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="item in items">
-      <td ng-repeat="(key, _) in options.table">{{item[key]}}</td>
-      <td>
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="setDetail(item, options.modal)">
-        Detail
-      </button>
-      </td>
+      <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal);" >{{item[key]}}</td>
     </tr>
   </tbody>
 </table>
@@ -26,8 +20,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">{{modal.title}}</h4>
       </div>
-      <div class="modal-body">
-        <p>{{modal.body}}</p>
+      <div class="modal-body" ng-repeat="field in modal.body">
+        <label>{{field.label}}:</label> {{field.value}}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -35,3 +29,25 @@
     </div>
   </div>
 </div>
+
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a ng-click="pag({newPage:0})">1</a></li>
+    <li><a ng-click="pag({newPage:1})">2</a></li>
+    <li><a ng-click="pag({newPage:2})">3</a></li>
+    <li><a >4</a></li>
+    <li><a >5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+

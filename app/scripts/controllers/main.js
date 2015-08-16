@@ -9,23 +9,19 @@
  */
 angular.module('tareawebApp')
   .controller('MainCtrl', ['$scope', 'User', function ($scope, User) {
-    $scope.people = [
-      {id: 1, name: 'Jordan', age: 21},
-      {id: 2, name: 'Alma', age: 21}
-    ];
-    $scope.opt = {id: 'ID', name: 'Nombre', age: 'Edad'};
-    $scope.users = User.query();
+
+    $scope.users = User.query({page:0});
     $scope.opts = {
-      table: {id: 'ID', name: 'Nombre', email: 'Email'},
+      table: {numero: 'Numero', nombre_cliente: 'Nombre', monto_total: 'Monto Total'},
       modal: {
-        title: 'name',
-        body: {id: 'ID', name: 'Nombre', phone: 'Tel.', website: 'Pagina'}
+        title: 'nombre_cliente',
+        body: {numero: 'Numero', nombre_cliente: 'Nombre', monto_total: 'Monto Total', fecha: 'Fecha', ruc_cliente: 'Ruc'}
       }
     };
-    $scope.modal = {}
 
-    $scope.setDetail = function (user, opts) {
-      $scope.modal.title = user[opts.title];
-      $scope.modal.body = user;
-    };
+    $scope.onPageChange = function(newPage)
+    {
+      $scope.users = User.query({page:(newPage*10)});
+    }
+
   }]);
