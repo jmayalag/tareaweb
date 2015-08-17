@@ -12,12 +12,23 @@ angular.module('tareawebApp').
         var factoryInstance = element.injector().get(scope.factoryName);
         scope.page = 0;
         scope.pages = 10;
-        scope.items =  factoryInstance.query({page:(scope.page)});
+        //scope.items =  factoryInstance.query({page:(scope.page)});
+        scope.items =  factoryInstance.query({_start: '0',_limit:10});
+
+        scope.doFilter = function(){
+          scope.items = factoryInstance.query(scope.searchFields);
+        }
+
+        scope.cleanFilters = function(){
+          scope.searchFields= {};
+        }
+
+        scope.searchFields= {};
 
         scope.changePage = function(newPage)
         {
           scope.page = newPage;
-          scope.items = factoryInstance.query({page:(scope.page*10)});
+          scope.items = factoryInstance.query({_start: newPage*10,_limit:10});
         }
 
         scope.getPages = function() {

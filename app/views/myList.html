@@ -1,14 +1,18 @@
+
 <table class="table table-hover">
   <thead>
     <tr>
-      <th ng-repeat="opt in options.table">{{opt}}</th>
+      <th ng-repeat="(key, value) in options.table">{{value}}<input ng-model="searchFields[key]"/></th>
     </tr>
+    <tr><button ng-click="doFilter()" type="button" class="btn btn-primary" >Filtrar</button>
+      <button ng-click="cleanFilters()" type="button" class="btn btn-primary" >Limpiar Parámetros</button></tr>
   </thead>
   <tbody>
     <tr ng-repeat="item in items">
       <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal);" >{{item[key]}}</td>
     </tr>
   </tbody>
+
 </table>
 
 <!-- Modal -->
