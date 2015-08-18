@@ -1,7 +1,10 @@
 <table class="table table-hover">
   <thead>
   <tr>
-    <th ng-repeat="(key, value) in options.table">{{value}}<input ng-model="searchFields['by_' + key]"/></th>
+    <th ng-repeat="(key, value) in options.table" ng-click="sortColumn(key)">
+      <a>{{value}} <span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a>
+      <input ng-model="searchFields['by_' + key]"/>
+    </th>
   </tr>
 
   <div class="btn-group btn-group-sm" role="group">
@@ -15,8 +18,8 @@
   </thead>
   <tbody>
 
-  <tr ng-repeat="item in items[options.data]">
-    <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal);" >{{item[key]}}</td>
+  <tr ng-repeat="item in items[options.data]" style="cursor: pointer">
+    <td ng-repeat="(key, _) in options.table" ng-click="setDetail(item, options.modal)">{{item[key]}}</td>
   </tr>
   </tbody>
 
@@ -42,7 +45,7 @@
 <nav>
   <ul class="pagination">
     <li ng-class="{disabled: page == 1}">
-      <a href ng-click="changePage(page-1)" aria-label="Previous">
+      <a href ng-click="prevPage()" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
@@ -51,7 +54,7 @@
       <a href ng-click="changePage($index+1)">{{$index+1}}</a>
     </li>
     <li ng-class="{disabled: page == 10}">
-      <a href ng-click="changePage(page+1)" aria-label="Next">
+      <a href ng-click="nextPage()" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

@@ -14,6 +14,8 @@ angular.module('tareawebApp').
         scope.pages = 10;
         //scope.items =  factoryInstance.query({page:(scope.page)});
         scope.searchFields = {page: 1};
+        scope.sort = {field: 'id', desc: false};
+
         scope.items = factoryInstance.query(scope.searchFields);
 
         scope.doFilter = function () {
@@ -24,14 +26,30 @@ angular.module('tareawebApp').
           scope.items = factoryInstance.query(scope.searchFields);
         };
 
+        scope.sortColumn = function (field) {
+          delete scope.searchFields[scope.sort.field]; // eliminamos el orden anterior
+          scope.sort.field = field;
+          scope.sort.desc = !scope.sort.desc;
+          scope.searchFields[field] = scope.sort.desc ? 'desc' : 'asc';
+          scope.doFilter();
+        }
+
         scope.cleanFilters = function () {
           scope.searchFields = {page: 1, _limit: 10};
           scope.items = factoryInstance.query(scope.searchFields);
         };
 
+        scope.prevPage = function () {
+          if (scope.page > 1)
+            scope.changePage(scope.page - 1);
+        };
+
+        scope.nextPage = function () {
+          if (scope.page < scope.pages)
+            scope.changePage(scope.page + 1);
+        };
+
         scope.changePage = function (newPage) {
-          if(newPage < 1) return;
-          if(newPage > scope.pages) return;
           scope.page = newPage;
           scope.searchFields['page'] = scope.page;
           scope.items = factoryInstance.query(scope.searchFields);
