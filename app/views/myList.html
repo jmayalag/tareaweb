@@ -22,7 +22,7 @@
   <tbody>
 
   <tr ng-repeat="item in items[options.data]" style="cursor: pointer">
-    <td ng-repeat="(key, _) in options.table" ng-click="setDetail(item, options.modal)">{{item[key]}}</td>
+    <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal)">{{item[key]}}</td>
   </tr>
   </tbody>
 
