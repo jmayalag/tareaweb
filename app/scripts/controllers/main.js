@@ -15,7 +15,8 @@ angular.module('tareawebApp')
       modal: {
         title: 'nombre_cliente',
         body: {numero: 'Numero', nombre_cliente: 'Nombre', monto_total: 'Monto Total', fecha: 'Fecha', ruc_cliente: 'Ruc'}
-      }
+      },
+      data: 'ventas'
     };
 
   }]);
