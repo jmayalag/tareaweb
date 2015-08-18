@@ -1,17 +1,27 @@
 <table class="table table-hover">
   <thead>
-    <tr>
-      <th ng-repeat="opt in options.table">{{opt}}</th>
-    </tr>
+  <tr>
+    <th ng-repeat="(key, value) in options.table">{{value}}<input ng-model="searchFields[key]"/></th>
+  </tr>
+
+  <div class="btn-group btn-group-sm" role="group">
+          <button ng-click="doFilter()" type="button" class="btn btn-default" aria-label="Left Align">
+            <a class="glyphicon glyphicon-filter" aria-hidden="true">Filtrar</a>
+          </button>
+          <button ng-click="cleanFilters()" type="button" class="btn btn-default" aria-label="Left Align">
+            <a class="glyphicon glyphicon-erase" aria-hidden="true">Limpiar parámetros</a>
+          </button>
+    </div>
   </thead>
   <tbody>
-    <tr ng-repeat="item in items">
-      <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal);" >{{item[key]}}</td>
-    </tr>
+
+  <tr ng-repeat="item in items">
+    <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal);" >{{item[key]}}</td>
+  </tr>
   </tbody>
+
 </table>
 
-<!--TODO: mejorar esta parte-->
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
@@ -29,21 +39,19 @@
     </div>
   </div>
 </div>
-
 <nav>
   <ul class="pagination">
     <li>
-      <a href="#" aria-label="Previous">
+      <a ng-click="changePage(page-1)" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li><a ng-click="pag({newPage:0})">1</a></li>
-    <li><a ng-click="pag({newPage:1})">2</a></li>
-    <li><a ng-click="pag({newPage:2})">3</a></li>
-    <li><a >4</a></li>
-    <li><a >5</a></li>
+
+    <li ng-repeat="p in getPages() track by $index">
+      <a ng-click="changePage($index)">{{$index+1}}</a>
+    </li>
     <li>
-      <a href="#" aria-label="Next">
+      <a ng-click="changePage(page+1)" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
