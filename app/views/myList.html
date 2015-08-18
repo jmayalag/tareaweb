@@ -1,15 +1,23 @@
 <table class="table table-hover">
   <thead>
-    <tr>
-      <th ng-repeat="(key, value) in options.table">{{value}}<input ng-model="searchFields[key]"/></th>
-    </tr>
-    <tr><button ng-click="doFilter()" type="button" class="btn btn-primary" >Filtrar</button>
-      <button ng-click="cleanFilters()" type="button" class="btn btn-primary" >Limpiar Parámetros</button></tr>
+  <tr>
+    <th ng-repeat="(key, value) in options.table">{{value}}<input ng-model="searchFields[key]"/></th>
+  </tr>
+
+  <div class="btn-group btn-group-sm" role="group">
+          <button ng-click="doFilter()" type="button" class="btn btn-default" aria-label="Left Align">
+            <a class="glyphicon glyphicon-filter" aria-hidden="true">Filtrar</a>
+          </button>
+          <button ng-click="cleanFilters()" type="button" class="btn btn-default" aria-label="Left Align">
+            <a class="glyphicon glyphicon-erase" aria-hidden="true">Limpiar parámetros</a>
+          </button>
+    </div>
   </thead>
   <tbody>
-    <tr ng-repeat="item in items">
-      <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal);" >{{item[key]}}</td>
-    </tr>
+
+  <tr ng-repeat="item in items">
+    <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal);" >{{item[key]}}</td>
+  </tr>
   </tbody>
 
 </table>
