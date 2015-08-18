@@ -41,17 +41,17 @@
 </div>
 <nav>
   <ul class="pagination">
-    <li>
-      <a ng-click="changePage(page-1)" aria-label="Previous">
+    <li ng-class="{disabled: page == 1}">
+      <a href ng-click="changePage(page-1)" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
 
-    <li ng-repeat="p in getPages() track by $index">
-      <a ng-click="changePage($index+1)">{{$index+1}}</a>
+    <li ng-repeat="p in getPages() track by $index" ng-class="{active: $index+1 == page}">
+      <a href ng-click="changePage($index+1)">{{$index+1}}</a>
     </li>
-    <li>
-      <a ng-click="changePage(page+1)" aria-label="Next">
+    <li ng-class="{disabled: page == 10}">
+      <a href ng-click="changePage(page+1)" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
