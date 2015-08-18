@@ -13,29 +13,34 @@ angular.module('tareawebApp').
         scope.page = 0;
         scope.pages = 10;
         //scope.items =  factoryInstance.query({page:(scope.page)});
-        scope.items =  factoryInstance.query({_start: '0',_limit:10});
+        scope.searchFields= {_start: 0,_limit:10};
+        scope.items =  factoryInstance.query(scope.searchFields);
 
         scope.doFilter = function(){
+
+          for(var k in scope.searchFields)
+            if(!scope.searchFields[k]) delete scope.searchFields[k];
+
+          scope.searchFields['_start']=0;
           scope.items = factoryInstance.query(scope.searchFields);
-        }
+        };
 
         scope.cleanFilters = function(){
-          scope.searchFields= {};
-        }
-
-        scope.searchFields= {};
+          scope.searchFields= {_start: 0,_limit:10};
+        };
 
         scope.changePage = function(newPage)
         {
           scope.page = newPage;
-          scope.items = factoryInstance.query({_start: newPage*10,_limit:10});
-        }
+          scope.searchFields['_start']=scope.page*10;
+          scope.items = factoryInstance.query(scope.searchFields);
+        };
 
         scope.getPages = function() {
           return new Array(scope.pages);
-        }
+        };
 
-        scope.modal = {}
+        scope.modal = {};
         scope.setDetail = function (user, opts) {
           scope.modal.title = user[opts.title];
           scope.modal.body = [];
