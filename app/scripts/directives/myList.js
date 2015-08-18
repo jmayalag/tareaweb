@@ -10,28 +10,30 @@ angular.module('tareawebApp').
       link: function (scope, element) {
 
         var factoryInstance = element.injector().get(scope.factoryName);
-        scope.page = 0;
+        scope.page = 1;
         scope.pages = 10;
         //scope.items =  factoryInstance.query({page:(scope.page)});
-        scope.searchFields = {_start: 0, _limit: 10};
+        scope.searchFields = {page: 1};
         scope.items = factoryInstance.query(scope.searchFields);
 
         scope.doFilter = function () {
           for (var k in scope.searchFields)
             if (!scope.searchFields[k]) delete scope.searchFields[k];
 
-          scope.searchFields['_start'] = 0;
+          scope.searchFields['page'] = 1;
           scope.items = factoryInstance.query(scope.searchFields);
         };
 
         scope.cleanFilters = function () {
-          scope.searchFields = {_start: 0, _limit: 10};
+          scope.searchFields = {page: 1, _limit: 10};
           scope.items = factoryInstance.query(scope.searchFields);
         };
 
         scope.changePage = function (newPage) {
+          if(newPage < 1) return;
+          if(newPage > scope.pages) return;
           scope.page = newPage;
-          scope.searchFields['_start'] = scope.page * 10;
+          scope.searchFields['page'] = scope.page;
           scope.items = factoryInstance.query(scope.searchFields);
         };
 
