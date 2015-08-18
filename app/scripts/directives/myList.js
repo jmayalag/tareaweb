@@ -11,10 +11,12 @@ angular.module('tareawebApp').
 
         var factoryInstance = element.injector().get(scope.factoryName);
         scope.page = 1;
-        scope.pages = 10;
-        //scope.items =  factoryInstance.query({page:(scope.page)});
         scope.searchFields = {page: 1};
         scope.items = factoryInstance.query(scope.searchFields);
+
+        scope.items.$promise.then(function(data) {
+          scope.pages = data.meta.total_pages;
+        });
 
         scope.doFilter = function () {
           for (var k in scope.searchFields)
@@ -22,11 +24,17 @@ angular.module('tareawebApp').
 
           scope.searchFields['page'] = 1;
           scope.items = factoryInstance.query(scope.searchFields);
+          scope.items.$promise.then(function(data) {
+            scope.pages = data.meta.total_pages;
+          });
         };
 
         scope.cleanFilters = function () {
           scope.searchFields = {page: 1, _limit: 10};
           scope.items = factoryInstance.query(scope.searchFields);
+          scope.items.$promise.then(function(data) {
+            scope.pages = data.meta.total_pages;
+          });
         };
 
         scope.changePage = function (newPage) {
@@ -35,6 +43,9 @@ angular.module('tareawebApp').
           scope.page = newPage;
           scope.searchFields['page'] = scope.page;
           scope.items = factoryInstance.query(scope.searchFields);
+          scope.items.$promise.then(function(data) {
+            scope.pages = data.meta.total_pages;
+          });
         };
 
         scope.getPages = function () {
