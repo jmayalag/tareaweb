@@ -25,6 +25,7 @@ angular.module('tareawebApp').
             if (!scope.searchFields[k]) delete scope.searchFields[k];
 
           scope.searchFields['page'] = 1;
+          scope.page = 1;
           scope.items = factoryInstance.query(scope.searchFields);
           scope.items.$promise.then(function (data) {
             scope.pages = data.meta.total_pages;
@@ -32,20 +33,25 @@ angular.module('tareawebApp').
         };
 
         scope.sortColumn = function (field) {
-          delete scope.searchFields[sort.field]; // eliminamos el orden anterior
-          sort.field = field;
-          sort.desc = !sort.desc;
+          if (field != sort.field) {
+            delete scope.searchFields[sort.field]; // eliminamos el orden anterior
+            sort.field = field;
+            sort.desc = false;
+          } else {
+            sort.desc = !sort.desc;
+          }
           scope.searchFields[field] = sort.desc ? 'desc' : 'asc';
           scope.doFilter();
         }
 
         scope.sortOrder = function (field) {
-          if(field == sort.field)
+          if (field == sort.field)
             return sort.desc ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up';
           return 'glyphicon glyphicon-sort';
         };
 
         scope.cleanFilters = function () {
+          scope.page = 1;
           scope.searchFields = {page: 1};
           scope.items = factoryInstance.query(scope.searchFields);
           scope.items.$promise.then(function (data) {
@@ -74,6 +80,10 @@ angular.module('tareawebApp').
 
         scope.getPages = function () {
           return new Array(scope.pages);
+        };
+
+        scope.currentPage = function(page) {
+          return page === scope.page;
         };
 
         scope.modal = {};
