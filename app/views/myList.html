@@ -1,15 +1,14 @@
-{{total}}
-{{total_pages}}
-{{page_size}}
 <table class="table table-hover">
   <thead>
+
   <tr>
     <th ng-repeat="(key, value) in options.table">
-      <a ng-click="sortColumn(key)">{{value}} <span ng-class="sortOder(key)" aria-hidden="true"></span></a>
-      <input ng-model="searchFields['by_' + key]"/>
+      <a ng-click="sortColumn(key)">{{value}} <span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a>
+      <input ng-hide="searchFields['by_all_attributes']!=null && searchFields['by_all_attributes']!=''" class="form-control" ng-model="searchFields['by_' + key]"/>
     </th>
   </tr>
 
+  <input ng-focus="searchFields = {page: 1}" class="form-control" placeholder="Escriba una palabra a buscar" ng-model="searchFields['by_all_attributes']"/>
   <div class="btn-group btn-group-sm" role="group">
     <button ng-click="doFilter()" type="button" class="btn btn-default" aria-label="Left Align">
       <a class="glyphicon glyphicon-filter" aria-hidden="true">Filtrar</a>
@@ -18,6 +17,7 @@
       <a class="glyphicon glyphicon-erase" aria-hidden="true">Limpiar parámetros</a>
     </button>
   </div>
+
   </thead>
   <tbody>
 
