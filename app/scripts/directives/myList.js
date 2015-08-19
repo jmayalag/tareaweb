@@ -14,12 +14,15 @@ angular.module('tareawebApp').
         scope.page = 1;
         scope.searchFields = {page: 1};
 
-        var response = factoryInstance.query(scope.searchFields);
+        var getResponse = function () {
+          var response = factoryInstance.query(scope.searchFields);
+          response.$promise.then(function (data) {
+            scope.pages = data.meta.total_pages;
+            scope.items = data[scope.options.data];
+          });
+        };
 
-        response.$promise.then(function (data) {
-          scope.pages = data.meta.total_pages;
-          scope.items = data[scope.options.data];
-        });
+        getResponse();
 
         scope.doFilter = function () {
           for (var k in scope.searchFields)
@@ -27,11 +30,7 @@ angular.module('tareawebApp').
 
           scope.searchFields['page'] = 1;
           scope.page = 1;
-          response = factoryInstance.query(scope.searchFields);
-          response.$promise.then(function (data) {
-            scope.pages = data.meta.total_pages;
-            scope.items = data[scope.options.data];
-          });
+          getResponse();
         };
 
         scope.sortColumn = function (field) {
@@ -55,11 +54,7 @@ angular.module('tareawebApp').
         scope.cleanFilters = function () {
           scope.page = 1;
           scope.searchFields = {page: 1};
-          response = factoryInstance.query(scope.searchFields);
-          response.$promise.then(function (data) {
-            scope.pages = data.meta.total_pages;
-            scope.items = data[scope.options.data];
-          });
+          getResponse();
         };
 
         scope.prevPage = function () {
@@ -75,11 +70,7 @@ angular.module('tareawebApp').
         scope.changePage = function (newPage) {
           scope.page = newPage;
           scope.searchFields['page'] = scope.page;
-          response = factoryInstance.query(scope.searchFields);
-          response.$promise.then(function (data) {
-            scope.pages = data.meta.total_pages;
-            scope.items = data[scope.options.data];
-          });
+          getResponse();
         };
 
         scope.getPages = function () {
