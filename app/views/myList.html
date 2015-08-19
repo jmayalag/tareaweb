@@ -5,7 +5,7 @@
   <thead>
   <tr>
     <th ng-repeat="(key, value) in options.table">
-      <a ng-click="sortColumn(key)">{{value}} <span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a>
+      <a ng-click="sortColumn(key)">{{value}} <span ng-class="sortOder(key)" aria-hidden="true"></span></a>
       <input ng-model="searchFields['by_' + key]"/>
     </th>
   </tr>
@@ -21,7 +21,7 @@
   </thead>
   <tbody>
 
-  <tr ng-repeat="item in items[options.data]" style="cursor: pointer">
+  <tr ng-repeat="item in items[options.data]">
     <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal)">{{item[key]}}</td>
   </tr>
   </tbody>
