@@ -3,7 +3,7 @@
 
   <tr>
     <th ng-repeat="(key, value) in options.table">
-      <a ng-click="sortColumn(key)">{{value}} <span class="glyphicon glyphicon-sort" aria-hidden="true"></span></a>
+      <a ng-click="sortColumn(key)">{{value}} <span ng-class="sortOrder(key)" aria-hidden="true"></span></a>
       <input ng-hide="searchFields['by_all_attributes']!=null && searchFields['by_all_attributes']!=''" class="form-control" ng-model="searchFields['by_' + key]"/>
     </th>
   </tr>

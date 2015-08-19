@@ -39,7 +39,7 @@ angular.module('tareawebApp').
           scope.doFilter();
         }
 
-        scope.sortOder = function (field) {
+        scope.sortOrder = function (field) {
           if(field == sort.field)
             return sort.desc ? 'glyphicon glyphicon-chevron-down' : 'glyphicon glyphicon-chevron-up';
           return 'glyphicon glyphicon-sort';
