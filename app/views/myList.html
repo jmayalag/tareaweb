@@ -1,6 +1,6 @@
 Resp:{{response}}<br>
 QueryParams: {{searchFields}}<br>
-Items: {{items}}
+Items: {{items}}<br>
 <table class="table table-hover">
   <thead>
 
@@ -48,6 +48,8 @@ Items: {{items}}
     </div>
   </div>
 </div>
+
+<!-- Pages -->
 <nav>
   <ul class="pagination">
     <li ng-class="{disabled: page == 1}">
@@ -56,10 +58,10 @@ Items: {{items}}
       </a>
     </li>
 
-    <li ng-repeat="p in getPages() track by $index" ng-class="{active: currentPage($index+1)}">
+    <li ng-repeat="p in getPages() track by $index" ng-class="{active: page == $index+1}">
       <a href ng-click="changePage($index+1)">{{$index+1}}</a>
     </li>
-    <li ng-class="{disabled: page == 10}">
+    <li ng-class="{disabled: page == pages}">
       <a href ng-click="nextPage()" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>

@@ -68,6 +68,7 @@ angular.module('tareawebApp').
         };
 
         scope.changePage = function (newPage) {
+          if (newPage == scope.page) return;
           scope.page = newPage;
           scope.searchFields['page'] = scope.page;
           getResponse();
@@ -77,15 +78,11 @@ angular.module('tareawebApp').
           return new Array(scope.pages);
         };
 
-        scope.currentPage = function(page) {
-          return page === scope.page;
-        };
-
         scope.modal = {};
         scope.setDetail = function (user, opts) {
           scope.modal.title = user[opts.title];
           scope.modal.body = [];
-          for (data in opts.body) {
+          for (var data in opts.body) {
             scope.modal.body.push({label: opts.body[data], value: user[data]});
           }
           $('#myModal').modal('show');
