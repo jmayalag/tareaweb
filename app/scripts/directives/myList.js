@@ -40,7 +40,7 @@ angular.module('tareawebApp').
         }
 
         scope.cleanFilters = function () {
-          scope.searchFields = {page: 1, _limit: 10};
+          scope.searchFields = {page: 1};
           scope.items = factoryInstance.query(scope.searchFields);
           scope.items.$promise.then(function(data) {
             scope.pages = data.meta.total_pages;
