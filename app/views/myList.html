@@ -1,12 +1,13 @@
 Resp:{{response}}<br>
-QueryParams: {{searchFields}}<br>
+searchFields: {{searchFields}}<br>
+queryParams: {{queryParams}}<br>
 Items: {{items}}<br>
 <table class="table table-hover">
   <thead>
 
   <tr>
     <th ng-repeat="(key, value) in options.table">
-      <a ng-click="sortColumn(key)">{{value}} <span ng-class="sortOrder(key)" aria-hidden="true"></span></a>
+      <a ng-click="sortColumn(key)">{{value}} <span ng-class="sortIcon(key)" aria-hidden="true"></span></a>
       <input ng-hide="searchFields['by_all_attributes']!=null && searchFields['by_all_attributes']!=''" class="form-control" ng-model="searchFields['by_' + key]"/>
     </th>
   </tr>
