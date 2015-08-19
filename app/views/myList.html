@@ -1,3 +1,6 @@
+Resp:{{response}}<br>
+QueryParams: {{searchFields}}<br>
+Items: {{items}}
 <table class="table table-hover">
   <thead>
 
@@ -21,7 +24,7 @@
   </thead>
   <tbody>
 
-  <tr ng-repeat="item in items[options.data]">
+  <tr ng-repeat="item in items">
     <td ng-repeat="(key, _) in options.table" ng-dblclick="setDetail(item, options.modal)">{{item[key]}}</td>
   </tr>
   </tbody>

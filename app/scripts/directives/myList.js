@@ -14,10 +14,11 @@ angular.module('tareawebApp').
         scope.page = 1;
         scope.searchFields = {page: 1};
 
-        scope.items = factoryInstance.query(scope.searchFields);
+        scope.response = factoryInstance.query(scope.searchFields);
 
-        scope.items.$promise.then(function (data) {
+        scope.response.$promise.then(function (data) {
           scope.pages = data.meta.total_pages;
+          scope.items = data[scope.options.data];
         });
 
         scope.doFilter = function () {
@@ -26,9 +27,10 @@ angular.module('tareawebApp').
 
           scope.searchFields['page'] = 1;
           scope.page = 1;
-          scope.items = factoryInstance.query(scope.searchFields);
-          scope.items.$promise.then(function (data) {
+          scope.response = factoryInstance.query(scope.searchFields);
+          scope.response.$promise.then(function (data) {
             scope.pages = data.meta.total_pages;
+            scope.items = data[scope.options.data];
           });
         };
 
@@ -53,9 +55,10 @@ angular.module('tareawebApp').
         scope.cleanFilters = function () {
           scope.page = 1;
           scope.searchFields = {page: 1};
-          scope.items = factoryInstance.query(scope.searchFields);
-          scope.items.$promise.then(function (data) {
+          scope.response = factoryInstance.query(scope.searchFields);
+          scope.response.$promise.then(function (data) {
             scope.pages = data.meta.total_pages;
+            scope.items = data[scope.options.data];
           });
         };
 
@@ -72,9 +75,10 @@ angular.module('tareawebApp').
         scope.changePage = function (newPage) {
           scope.page = newPage;
           scope.searchFields['page'] = scope.page;
-          scope.items = factoryInstance.query(scope.searchFields);
-          scope.items.$promise.then(function (data) {
+          scope.response = factoryInstance.query(scope.searchFields);
+          scope.response.$promise.then(function (data) {
             scope.pages = data.meta.total_pages;
+            scope.items = data[scope.options.data];
           });
         };
 
