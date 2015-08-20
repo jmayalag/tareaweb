@@ -2,7 +2,7 @@
   <h1 class="md-display-2">Integrantes</h1>
   <md-list>
     <md-list-item class="md-3-line" ng-repeat="member in team">
-      <!--<img ng-src="{{item.face}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />-->
+      <img ng-src="{{member.photo}}" class="md-avatar" alt="{{member.name}}" />
       <div class="md-list-item-text">
         <h3>{{ member.name }}</h3>
         <h4>{{ member.email }}</h4>

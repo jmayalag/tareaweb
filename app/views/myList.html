@@ -10,7 +10,7 @@
 
   <md-input-container flex>
     <label>Escriba una palabra a buscar</label>
-    <input ng-focus="searchFields = {pages: 1}" ng-model="searchFields['by_all_attributes']">
+    <input ng-focus="searchFields = {pages: 1}" ng-model="searchFields['by_all_attributes']" ng-keypress="">
   </md-input-container>
   <div class="btn-group btn-group-sm" role="group">
     <md-button ng-click="doFilter()" class="md-raised md-primary">Filtrar</md-button>
