@@ -28,6 +28,8 @@ angular.module('tareawebApp').
             scope.loading = false;
             scope.pages = data.meta.total_pages;
             scope.items = data[scope.options.data];
+          }, function () {
+            alert("No se pudo obtener datos del servidor.");
           });
         };
 
