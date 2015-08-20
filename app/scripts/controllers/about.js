@@ -8,10 +8,10 @@
  * Controller of the tareawebApp
  */
 angular.module('tareawebApp')
-  .controller('AboutCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
+  .controller('AboutCtrl', ['$scope', function ($scope) {
+    $scope.team = [
+      {name: 'Jordan Ayala', email: 'jayala1993@outlook.com'},
+      {name: 'Daniel Ughelli', email: 'viktor92@gmail.com'},
+      {name: 'Santiago Ortiz', email: 'sanmiorto@gmail.com'}
     ];
-  });
+  }]);

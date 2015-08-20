@@ -11,6 +11,7 @@ angular.module('tareawebApp').
 
         var factoryInstance = element.injector().get(scope.factoryName);
         var sort = {field: 'id', desc: false};
+        scope.loading = true;
         scope.page = 1;
         scope.searchFields = {};
         scope.queryParams = {page: 1};
@@ -21,8 +22,10 @@ angular.module('tareawebApp').
 
         var getResponse = function () {
           scope.queryParams['page'] = scope.page;
+          scope.loading = true;
           var response = factoryInstance.query(scope.queryParams);
           response.$promise.then(function (data) {
+            scope.loading = false;
             scope.pages = data.meta.total_pages;
             scope.items = data[scope.options.data];
           });
