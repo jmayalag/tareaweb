@@ -64,6 +64,7 @@ angular.module('tareawebApp').
         };
 
         scope.cleanFilters = function () {
+          sort = {field: 'id', desc: false};
           scope.searchFields = {};
           scope.queryParams = {};
           pageRestart();
