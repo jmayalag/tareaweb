@@ -8,7 +8,7 @@
  * Controller of the tareawebApp
  */
 angular.module('tareawebApp')
-  .controller('MainCtrl', ['$scope', 'Venta', function ($scope, User) {
+  .controller('MainCtrl', ['$scope', 'Venta', function ($scope, Venta) {
 
     $scope.opts = {
       table: {numero: 'Numero', nombre_cliente: 'Nombre', monto_total: 'Monto Total'},

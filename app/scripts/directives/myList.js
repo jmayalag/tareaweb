@@ -1,3 +1,19 @@
+'use strict';
+
+/**
+ * @ngdoc directive
+ * @name tareawebApp.directive:myList
+ * @description
+ * # myList
+ * Directiva que muestra tabla
+ *
+ * @params:
+ * # opts: {table: {[column1, column2, ...]}, modal: {title: String, body: {[field1, field2, ...]}, data: field}
+ * # factory name
+ *
+ */
+
+
 angular.module('tareawebApp').
   directive('myList', function () {
     return {
