@@ -22,4 +22,10 @@ angular.module('tareawebApp')
       },
       data: 'ventas'
     };
+
+    $scope.prov = new Proveedor();
+
+    $scope.persist = function () {
+      $scope.prov.save();
+    };
   }]);

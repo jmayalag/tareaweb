@@ -1,5 +1,36 @@
 <div class="container">
   <h2 class="md-display-2">Proveedores</h2>
+
+  <md-button  class="md-raised md-primary" data-toggle="modal" data-target="#form-modal">Crear</md-button>
   <my-list options="opts" factory-name="Proveedor"></my-list>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="ProveedorForm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="ProveedorFormLabel">Crear Proveedor</h4>
+      </div>
+      <div class="modal-body">
+        <md-input-container>
+          <label>Nombre</label>
+          <input ng-model="prov.nombre">
+        </md-input-container>
+        <md-input-container>
+          <label>Apellido</label>
+          <input ng-model="prov.apellido">
+        </md-input-container>
+        <md-input-container>
+          <label>Cedula</label>
+          <input ng-model="prov.cedula">
+        </md-input-container>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="persist()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
