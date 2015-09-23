@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>TareaWeb</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -39,11 +39,11 @@
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Directiva</a></li>
-              <li><a href="#/proveedores">Proveedores</a></li>
-              <li><a href="#/productos">Producto</a></li>
-              <li><a ng-href="#/about">Integrantes</a></li>
+            <ul class="nav navbar-nav" ng-controller="NavigationCtrl">
+              <li ng-class="{active : isActive('/')}"><a href="#/">Directiva</a></li>
+              <li ng-class="{active : isActive('/proveedores')}"><a href="#/proveedores">Proveedores</a></li>
+              <li ng-class="{active : isActive('/productos')}"><a href="#/productos">Producto</a></li>
+              <li ng-class="{active : isActive('/about')}"><a ng-href="#/about">Integrantes</a></li>
             </ul>
           </div>
         </div>
@@ -53,6 +53,7 @@
     <div class="container">
     <div ng-view=""></div>
     </div>
+
 
     <div class="footer">
       <div class="container">
@@ -99,6 +100,7 @@
         <script src="scripts/services/proveedor.js"></script>
         <script src="scripts/services/producto.js"></script>
         <script src="scripts/controllers/producto.js"></script>
+        <script src="scripts/controllers/navigation.js"></script>
         <!-- endbuild -->
 </body>
 </html>
