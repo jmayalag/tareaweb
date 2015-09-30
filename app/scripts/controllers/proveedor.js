@@ -10,17 +10,18 @@
 angular.module('tareawebApp')
   .controller('ProveedorCtrl', ['$scope', 'Proveedor', function ($scope, Proveedor) {
     $scope.opts = {
-      table: {id: 'ID', nombre: 'Nombre', apellido: 'Apellido', cedula: 'Cedula'},
+      table: {id: 'ID', nombre: 'Nombre', ruc: 'RUC', email: 'Email'},
       modal: {
         title: 'nombre',
         body: {
           id: 'id',
           nombre: 'Nombre',
-          apellido: 'Apellido',
-          cedula: 'Cedula de Identidad'
+          ruc: 'RUC',
+          tel: 'Telefono',
+          email: 'Email'
         }
       },
-      data: 'ventas'
+      data: 'listado'
     };
 
     $scope.prov = new Proveedor();

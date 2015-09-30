@@ -20,6 +20,6 @@ angular.module('tareawebApp')
           precio_unitario: 'Precio Unitario'
         }
       },
-      data: 'ventas'
+      data: 'listado'
     };
   }]);
