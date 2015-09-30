@@ -24,6 +24,16 @@ angular.module('tareawebApp')
       data: 'listado'
     };
 
+    $scope.form_opts = {
+      header: 'Proveedor',
+      fields: {
+        nombre: 'Nombre',
+        ruc: 'RUC',
+        tel: 'Telefono',
+        email: 'Email'
+      }
+    };
+
     $scope.prov = new Proveedor();
 
     $scope.persist = function () {

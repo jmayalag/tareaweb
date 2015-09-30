@@ -1,0 +1,23 @@
+<md-button  class="md-raised md-primary" data-toggle="modal" data-target="#form-modal">Crear</md-button>
+<!-- Modal -->
+<div class="modal fade" id="form-modal" tabindex="-1" role="dialog" aria-labelledby="ProveedorForm">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="ProveedorFormLabel">Crear {{ options.header }}</h4>
+      </div>
+      <div class="modal-body">
+        <md-input-container ng-repeat="(k, v) in options.fields">
+          <label>{{ v }}</label>
+          <input ng-model="obj[k]">
+        </md-input-container>
+        NEW: {{obj}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" ng-click="persist()">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
